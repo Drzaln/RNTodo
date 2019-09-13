@@ -14,7 +14,8 @@ export class Home extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      todos: Todo
+      todos: Todo,
+      refresh: ''
     }
     this.props.navigation.addListener('willFocus', async () => {
       this.addTodo()
@@ -29,6 +30,9 @@ export class Home extends Component {
 
   deleteTodo = id => {
     Todo.splice(this.state.todos.id - 1, 1)
+    this.setState({
+      refresh: this.state.refresh
+    })
   }
 
   render () {
